@@ -1,0 +1,420 @@
+:root {
+    /* Light Mode Colors */
+    --background-color-light: #f4f7fa; /* Fallback/overlay for light mode */
+    --text-color-light: #333;
+    --header-bg-light: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+    --card-bg-light: rgba(255, 255, 255, 0.85); /* Semi-transparent white */
+    --border-color-light: rgba(209, 217, 230, 0.6);
+    --accent-blue-light: #5a7dff;
+    --accent-purple-light: #8e5aff;
+    --input-bg-light: rgba(255, 255, 255, 0.9);
+    --input-border-light: rgba(203, 214, 226, 0.7);
+    --category-heading-light: #444; /* Darker for better contrast */
+    --overlay-color-light: rgba(255, 255, 255, 0.3); /* Lighter overlay */
+}
+
+[data-theme='dark'] {
+    /* Dark Mode Colors */
+    --background-color-dark: #1a1a2e; /* Fallback/overlay for dark mode */
+    --text-color-dark: #e0e0e0;
+    --header-bg-dark: rgba(22, 36, 71, 0.8); /* Semi-transparent dark blue */
+    --card-bg-dark: rgba(34, 46, 80, 0.85); /* Semi-transparent dark blue */
+    --border-color-dark: rgba(58, 71, 106, 0.6);
+    --accent-blue-dark: #7a9eff;
+    --accent-purple-dark: #b69eff;
+    --input-bg-dark: rgba(44, 58, 94, 0.9);
+    --input-border-dark: rgba(74, 92, 140, 0.7);
+    --category-heading-dark: #c0c0c0; /* Lighter for better contrast */
+    --overlay-color-dark: rgba(0, 0, 0, 0.5); /* Darker overlay */
+}
+
+/* Base Styles */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    /* Your Name Anime Background */
+    background-image: url('https://images2.alphacoders.com/777/thumb-1920-777211.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Makes the background scroll independently (parallax) */
+    background-repeat: no-repeat;
+    position: relative; /* Needed for the ::before pseudo-element */
+    z-index: 1; /* Ensures content is above the overlay */
+}
+
+/* Background Overlay for readability */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Place behind content */
+    transition: background-color 0.3s ease;
+}
+
+/* Overlay specific to theme */
+body[data-theme='light']::before {
+    background-color: var(--overlay-color-light); /* Lighter overlay for light mode */
+}
+
+body[data-theme='dark']::before {
+    background-color: var(--overlay-color-dark); /* Darker overlay for dark mode */
+}
+
+/* Theme Variables Application (Adjusted for background image) */
+body[data-theme='light'] {
+    color: var(--text-color-light);
+}
+
+body[data-theme='dark'] {
+    color: var(--text-color-dark);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px;
+    position: relative; /* Ensure content is above overlay */
+    z-index: 2; /* Higher than body's z-index */
+}
+
+/* Header */
+header {
+    padding: 15px 0; /* Slightly reduced padding */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Slightly stronger shadow */
+    transition: background-color 0.3s ease;
+    backdrop-filter: blur(5px); /* Adds a subtle blur behind the header */
+    -webkit-backdrop-filter: blur(5px); /* Safari support */
+}
+
+body[data-theme='light'] header {
+    background-color: var(--header-bg-light);
+}
+
+body[data-theme='dark'] header {
+    background-color: var(--header-bg-dark);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Removed .header-left styles */
+
+/* Removed .choir-logo styles */
+
+.header-text h1 {
+    margin: 0;
+    font-size: 2em; /* Slightly larger title */
+    font-weight: 700; /* Bolder font weight */
+    color: #fff; /* White text for better contrast on dark/semi-transparent header */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Text shadow for readability */
+}
+
+body[data-theme='dark'] .header-text h1 {
+     color: #fff; /* Keep white in dark mode */
+}
+
+
+.header-text .subtitle {
+    margin-top: 5px;
+    font-size: 0.95em;
+    color: #eee; /* Lighter color for subtitle */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.4); /* Text shadow for readability */
+}
+
+body[data-theme='dark'] .header-text .subtitle {
+    color: #ddd; /* Maintain lighter color in dark mode */
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5em;
+    padding: 5px;
+    border-radius: 5px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    color: #fff; /* White icon for better contrast */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+body[data-theme='light'] .theme-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+body[data-theme='dark'] .theme-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.theme-toggle .icon {
+    display: block;
+}
+
+/* Main Content */
+main {
+    flex-grow: 1;
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
+h2 {
+    font-size: 1.6em;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    color: #f0f0f0; /* Lighter color for contrast on background */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+}
+
+body[data-theme='dark'] h2 {
+    color: #f0f0f0; /* Keep consistent in dark mode */
+}
+
+/* Search Section */
+.search-section {
+    margin-bottom: 30px;
+}
+
+#search-input {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1em;
+    border-radius: 8px;
+    border: 1px solid;
+    transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    backdrop-filter: blur(3px); /* Subtle blur for input */
+    -webkit-backdrop-filter: blur(3px);
+}
+
+body[data-theme='light'] #search-input {
+    background-color: var(--input-bg-light);
+    border-color: var(--input-border-light);
+    color: var(--text-color-light);
+}
+
+body[data-theme='dark'] #search-input {
+    background-color: var(--input-bg-dark);
+    border-color: var(--input-border-dark);
+    color: var(--text-color-dark);
+}
+
+#search-input::placeholder {
+    color: var(--input-border-light);
+}
+
+body[data-theme='dark'] #search-input::placeholder {
+    color: var(--input-border-dark);
+}
+
+
+/* Items Grid */
+.items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 25px;
+    padding-bottom: 20px;
+}
+
+.item-card {
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Stronger shadow for definition */
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    min-height: 150px;
+    backdrop-filter: blur(3px); /* Subtle blur for cards */
+    -webkit-backdrop-filter: blur(3px);
+}
+
+body[data-theme='light'] .item-card {
+    background-color: var(--card-bg-light);
+    border-color: var(--border-color-light);
+}
+
+body[data-theme='dark'] .item-card {
+    background-color: var(--card-bg-dark);
+    border-color: var(--border-color-dark);
+}
+
+.item-card:hover {
+    transform: translateY(-5px); /* More pronounced hover effect */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Stronger hover shadow */
+}
+
+body[data-theme='dark'] .item-card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.item-card h3 {
+    margin-top: 0;
+    font-size: 1.15em;
+    margin-bottom: 10px;
+    font-weight: 600;
+    line-height: 1.4;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color-light); /* Ensure title color is consistent */
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+body[data-theme='dark'] .item-card h3 {
+    color: var(--text-color-dark);
+}
+
+.item-card a {
+    display: inline-block;
+    background-color: var(--accent-blue-light);
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    margin-top: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+body[data-theme='dark'] .item-card a {
+    background-color: var(--accent-blue-dark);
+}
+
+.item-card a:hover {
+    background-color: var(--accent-purple-light);
+    transform: translateY(-2px); /* Slightly more pronounced button hover */
+}
+
+body[data-theme='dark'] .item-card a:hover {
+    background-color: var(--accent-purple-dark);
+}
+
+.no-results-message {
+    text-align: center;
+    grid-column: 1 / -1;
+    padding: 20px;
+    font-style: italic;
+    color: #f0f0f0; /* Lighter for visibility on background */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+body[data-theme='dark'] .no-results-message {
+    color: #f0f0f0;
+}
+
+/* Video Category Specific Styles */
+.content-category-section {
+    margin-top: 30px;
+}
+
+.content-category-section h3 {
+    font-size: 1.4em;
+    margin-bottom: 15px;
+    color: #fff; /* White for category headings */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3); /* Lighter, semi-transparent border */
+    padding-bottom: 5px;
+}
+
+body[data-theme='dark'] .content-category-section h3 {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Footer */
+footer {
+    padding: 20px 0;
+    text-align: center;
+    font-size: 0.9em;
+    border-top: 1px solid;
+    transition: border-color 0.3s ease;
+    margin-top: 40px;
+    background-color: rgba(0, 0, 0, 0.4); /* Darker, semi-transparent footer */
+    color: #f0f0f0; /* Lighter text for footer */
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+}
+
+body[data-theme='light'] footer {
+    border-color: rgba(209, 217, 230, 0.4);
+}
+
+body[data-theme='dark'] footer {
+    border-color: rgba(58, 71, 106, 0.4);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .items-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 20px;
+    }
+    /* Removed choir-logo specific media queries */
+    .header-text h1 {
+        font-size: 1.6em;
+    }
+    .header-text .subtitle {
+        font-size: 0.85em;
+    }
+}
+
+@media (max-width: 768px) {
+    .items-grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 15px;
+    }
+    /* Removed choir-logo specific media queries */
+    .header-text h1 {
+        font-size: 1.4em;
+    }
+    .header-text .subtitle {
+        font-size: 0.8em;
+    }
+    /* Removed .header-left specific media queries */
+}
+
+@media (max-width: 480px) {
+    .items-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    .container {
+        padding: 10px;
+    }
+    /* Removed choir-logo specific media queries */
+    .header-text h1 {
+        font-size: 1.2em;
+    }
+    .header-text .subtitle {
+        font-size: 0.75em;
+    }
+    .header-content {
+        flex-direction: column;
+        align-items: flex-start; /* Align header items to start on small screens */
+    }
+    .theme-toggle {
+        align-self: flex-end; /* Push toggle to bottom-right of header-content */
+        margin-top: -40px; /* Adjust as needed to overlap or align */
+    }
+}
