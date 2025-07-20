@@ -1,31 +1,39 @@
 :root {
     /* Light Mode Colors */
-    --background-color-light: #f4f7fa; /* Fallback/overlay for light mode */
+    --background-color-light: #f4f7fa;
     --text-color-light: #333;
-    --header-bg-light: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
-    --card-bg-light: rgba(255, 255, 255, 0.85); /* Semi-transparent white */
+    --header-bg-light: rgba(255, 255, 255, 0.8);
+    --card-bg-light: rgba(255, 255, 255, 0.85);
     --border-color-light: rgba(209, 217, 230, 0.6);
     --accent-blue-light: #5a7dff;
     --accent-purple-light: #8e5aff;
     --input-bg-light: rgba(255, 255, 255, 0.9);
     --input-border-light: rgba(203, 214, 226, 0.7);
-    --category-heading-light: #444; /* Darker for better contrast */
-    --overlay-color-light: rgba(255, 255, 255, 0.3); /* Lighter overlay */
+    --category-heading-light: #444;
+    --overlay-color-light: rgba(255, 255, 255, 0.3);
+    --sidebar-bg-light: rgba(240, 243, 246, 0.9); /* Lighter sidebar */
+    --sidebar-text-light: #333;
+    --sidebar-link-hover-light: rgba(0, 0, 0, 0.08);
+    --sidebar-link-active-light: #5a7dff;
 }
 
 [data-theme='dark'] {
     /* Dark Mode Colors */
-    --background-color-dark: #1a1a2e; /* Fallback/overlay for dark mode */
+    --background-color-dark: #1a1a2e;
     --text-color-dark: #e0e0e0;
-    --header-bg-dark: rgba(22, 36, 71, 0.8); /* Semi-transparent dark blue */
-    --card-bg-dark: rgba(34, 46, 80, 0.85); /* Semi-transparent dark blue */
+    --header-bg-dark: rgba(22, 36, 71, 0.8);
+    --card-bg-dark: rgba(34, 46, 80, 0.85);
     --border-color-dark: rgba(58, 71, 106, 0.6);
     --accent-blue-dark: #7a9eff;
     --accent-purple-dark: #b69eff;
     --input-bg-dark: rgba(44, 58, 94, 0.9);
     --input-border-dark: rgba(74, 92, 140, 0.7);
-    --category-heading-dark: #c0c0c0; /* Lighter for better contrast */
-    --overlay-color-dark: rgba(0, 0, 0, 0.5); /* Darker overlay */
+    --category-heading-dark: #c0c0c0;
+    --overlay-color-dark: rgba(0, 0, 0, 0.5);
+    --sidebar-bg-dark: rgba(26, 26, 46, 0.9); /* Darker sidebar */
+    --sidebar-text-dark: #e0e0e0;
+    --sidebar-link-hover-dark: rgba(255, 255, 255, 0.08);
+    --sidebar-link-active-dark: #7a9eff;
 }
 
 /* Base Styles */
@@ -42,10 +50,10 @@ body {
     background-image: url('https://images2.alphacoders.com/777/thumb-1920-777211.png');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* Makes the background scroll independently (parallax) */
+    background-attachment: fixed;
     background-repeat: no-repeat;
-    position: relative; /* Needed for the ::before pseudo-element */
-    z-index: 1; /* Ensures content is above the overlay */
+    position: relative;
+    z-index: 1;
 }
 
 /* Background Overlay for readability */
@@ -56,43 +64,40 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* Place behind content */
+    z-index: -1;
     transition: background-color 0.3s ease;
 }
 
 /* Overlay specific to theme */
 body[data-theme='light']::before {
-    background-color: var(--overlay-color-light); /* Lighter overlay for light mode */
+    background-color: var(--overlay-color-light);
 }
 
 body[data-theme='dark']::before {
-    background-color: var(--overlay-color-dark); /* Darker overlay for dark mode */
+    background-color: var(--overlay-color-dark);
 }
 
-/* Theme Variables Application (Adjusted for background image) */
-body[data-theme='light'] {
-    color: var(--text-color-light);
-}
-
-body[data-theme='dark'] {
-    color: var(--text-color-dark);
+/* Main App Container (for sidebar and content) */
+.app-container {
+    display: flex;
+    flex-grow: 1; /* Allows it to take remaining vertical space */
+    position: relative; /* For sidebar positioning if needed */
+    z-index: 2; /* Ensure content is above overlay */
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 15px;
-    position: relative; /* Ensure content is above overlay */
-    z-index: 2; /* Higher than body's z-index */
 }
 
 /* Header */
 header {
-    padding: 15px 0; /* Slightly reduced padding */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Slightly stronger shadow */
+    padding: 15px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease;
-    backdrop-filter: blur(5px); /* Adds a subtle blur behind the header */
-    -webkit-backdrop-filter: blur(5px); /* Safari support */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
 }
 
 body[data-theme='light'] header {
@@ -109,31 +114,17 @@ body[data-theme='dark'] header {
     align-items: center;
 }
 
-/* Removed .header-left styles as logo is gone */
-
 .header-text h1 {
     margin: 0;
-    font-size: 2em; /* Slightly larger title */
-    font-weight: 700; /* Bolder font weight */
-    color: #fff; /* White text for better contrast on dark/semi-transparent header */
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Text shadow for readability */
+    font-size: 2em;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 }
 
 body[data-theme='dark'] .header-text h1 {
-     color: #fff; /* Keep white in dark mode */
+     color: #fff;
 }
-
-/* Subtitle styling is no longer needed/removed */
-/* .header-text .subtitle {
-    margin-top: 5px;
-    font-size: 0.95em;
-    color: #eee;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
-}
-
-body[data-theme='dark'] .header-text .subtitle {
-    color: #ddd;
-} */
 
 /* Theme Toggle Button */
 .theme-toggle {
@@ -144,7 +135,7 @@ body[data-theme='dark'] .header-text .subtitle {
     padding: 5px;
     border-radius: 5px;
     transition: background-color 0.2s ease, transform 0.2s ease;
-    color: #fff; /* White icon for better contrast */
+    color: #fff;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
 
@@ -164,23 +155,93 @@ body[data-theme='dark'] .theme-toggle:hover {
     display: block;
 }
 
-/* Main Content */
-main {
+/* Sidebar */
+.sidebar {
+    width: 250px; /* Fixed width for sidebar */
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    flex-shrink: 0; /* Prevent sidebar from shrinking */
+}
+
+body[data-theme='light'] .sidebar {
+    background-color: var(--sidebar-bg-light);
+    color: var(--sidebar-text-light);
+}
+
+body[data-theme='dark'] .sidebar {
+    background-color: var(--sidebar-bg-dark);
+    color: var(--sidebar-text-dark);
+}
+
+.sidebar h3 {
+    font-size: 1.3em;
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: var(--accent-blue-light);
+}
+
+body[data-theme='dark'] .sidebar h3 {
+    color: var(--accent-blue-dark);
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-nav li {
+    margin-bottom: 10px;
+}
+
+.sidebar-nav a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: inherit; /* Inherit from sidebar text */
+    border-radius: 8px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    font-weight: 500;
+}
+
+body[data-theme='light'] .sidebar-nav a:hover {
+    background-color: var(--sidebar-link-hover-light);
+}
+
+body[data-theme='dark'] .sidebar-nav a:hover {
+    background-color: var(--sidebar-link-hover-dark);
+}
+
+body[data-theme='light'] .sidebar-nav a.active {
+    background-color: var(--sidebar-link-active-light);
+    color: #fff;
+}
+
+body[data-theme='dark'] .sidebar-nav a.active {
+    background-color: var(--sidebar-link-active-dark);
+    color: #fff;
+}
+
+/* Main Content Area */
+.main-content {
     flex-grow: 1;
-    padding-top: 20px;
-    padding-bottom: 40px;
+    padding: 20px 30px; /* Padding for the main content area */
+    overflow-y: auto; /* Enable scrolling for content if it overflows */
 }
 
 h2 {
     font-size: 1.6em;
     margin-top: 30px;
     margin-bottom: 20px;
-    color: #f0f0f0; /* Lighter color for contrast on background */
+    color: #f0f0f0;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
 }
 
 body[data-theme='dark'] h2 {
-    color: #f0f0f0; /* Keep consistent in dark mode */
+    color: #f0f0f0;
 }
 
 /* Search Section */
@@ -195,7 +256,7 @@ body[data-theme='dark'] h2 {
     border-radius: 8px;
     border: 1px solid;
     transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
-    backdrop-filter: blur(3px); /* Subtle blur for input */
+    backdrop-filter: blur(3px);
     -webkit-backdrop-filter: blur(3px);
 }
 
@@ -219,7 +280,6 @@ body[data-theme='dark'] #search-input::placeholder {
     color: var(--input-border-dark);
 }
 
-
 /* Items Grid */
 .items-grid {
     display: grid;
@@ -232,14 +292,14 @@ body[data-theme='dark'] #search-input::placeholder {
     border: 1px solid;
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Stronger shadow for definition */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     text-align: center;
     min-height: 150px;
-    backdrop-filter: blur(3px); /* Subtle blur for cards */
+    backdrop-filter: blur(3px);
     -webkit-backdrop-filter: blur(3px);
 }
 
@@ -254,8 +314,8 @@ body[data-theme='dark'] .item-card {
 }
 
 .item-card:hover {
-    transform: translateY(-5px); /* More pronounced hover effect */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Stronger hover shadow */
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 body[data-theme='dark'] .item-card:hover {
@@ -272,7 +332,7 @@ body[data-theme='dark'] .item-card:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--text-color-light); /* Ensure title color is consistent */
+    color: var(--text-color-light);
     text-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
 
@@ -301,7 +361,7 @@ body[data-theme='dark'] .item-card a {
 
 .item-card a:hover {
     background-color: var(--accent-purple-light);
-    transform: translateY(-2px); /* Slightly more pronounced button hover */
+    transform: translateY(-2px);
 }
 
 body[data-theme='dark'] .item-card a:hover {
@@ -313,7 +373,7 @@ body[data-theme='dark'] .item-card a:hover {
     grid-column: 1 / -1;
     padding: 20px;
     font-style: italic;
-    color: #f0f0f0; /* Lighter for visibility on background */
+    color: #f0f0f0;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
 
@@ -321,7 +381,7 @@ body[data-theme='dark'] .no-results-message {
     color: #f0f0f0;
 }
 
-/* Video Category Specific Styles */
+/* Video Category Specific Styles (now for repertoire section) */
 .content-category-section {
     margin-top: 30px;
 }
@@ -329,9 +389,9 @@ body[data-theme='dark'] .no-results-message {
 .content-category-section h3 {
     font-size: 1.4em;
     margin-bottom: 15px;
-    color: #fff; /* White for category headings */
+    color: #fff;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3); /* Lighter, semi-transparent border */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     padding-bottom: 5px;
 }
 
@@ -347,9 +407,9 @@ footer {
     font-size: 0.9em;
     border-top: 1px solid;
     transition: border-color 0.3s ease;
-    margin-top: 40px;
-    background-color: rgba(0, 0, 0, 0.4); /* Darker, semi-transparent footer */
-    color: #f0f0f0; /* Lighter text for footer */
+    margin-top: auto; /* Push footer to bottom */
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #f0f0f0;
     backdrop-filter: blur(3px);
     -webkit-backdrop-filter: blur(3px);
 }
@@ -368,39 +428,81 @@ body[data-theme='dark'] footer {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         gap: 20px;
     }
-    /* .header-text h1 { font-size: 1.6em; } Removed this from here as it's adjusted below to be universal */
-    /* .header-text .subtitle { font-size: 0.85em; } Removed this */
+    .sidebar {
+        width: 200px; /* Smaller sidebar on tablets */
+    }
+    .main-content {
+        padding: 15px 20px;
+    }
 }
 
 @media (max-width: 768px) {
+    .app-container {
+        flex-direction: column; /* Stack sidebar and content on small screens */
+    }
+    .sidebar {
+        width: 100%; /* Full width sidebar on mobile */
+        padding: 15px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .sidebar-nav ul {
+        display: flex; /* Make categories horizontal on mobile */
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    .sidebar-nav li {
+        margin-bottom: 0;
+    }
+    .main-content {
+        padding: 15px 10px;
+    }
     .items-grid {
-        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); /* Adjust for mobile grid */
         gap: 15px;
     }
-    .header-text h1 { /* Apply adjustment here */
-        font-size: 1.6em; /* Adjusted for smaller screens */
+    header h1 {
+        font-size: 1.6em;
     }
-    /* Removed .header-text .subtitle from here */
+    .theme-toggle {
+        font-size: 1.3em;
+    }
+    h2 {
+        font-size: 1.4em;
+    }
+    .item-card {
+        padding: 15px;
+        min-height: 120px;
+    }
+    .item-card h3 {
+        font-size: 1em;
+    }
 }
 
 @media (max-width: 480px) {
     .items-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Single column on very small screens */
         gap: 15px;
     }
     .container {
         padding: 10px;
     }
-    .header-text h1 { /* Apply adjustment here */
-        font-size: 1.4em; /* Adjusted for very small screens */
-    }
-    /* Removed .header-text .subtitle from here */
-    .header-content {
-        flex-direction: column;
-        align-items: flex-start; /* Align header items to start on small screens */
+    header h1 {
+        font-size: 1.4em;
     }
     .theme-toggle {
-        align-self: flex-end; /* Push toggle to bottom-right of header-content */
-        margin-top: -40px; /* Adjust as needed to overlap or align */
+        font-size: 1.2em;
+    }
+    .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .theme-toggle {
+        align-self: flex-end;
+        margin-top: -40px;
+    }
+    .sidebar-nav ul {
+        flex-direction: column; /* Stack categories vertically on very small screens */
+        align-items: center;
     }
 }
