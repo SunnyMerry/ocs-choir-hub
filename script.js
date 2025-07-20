@@ -1,31 +1,35 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const videoCategoriesContainer = document.getElementById('video-categories-container');
+    const allRepertoireGrid = document.getElementById('all-repertoire-grid');
     const latestVideosList = document.getElementById('latest-videos-list');
     const searchInput = document.getElementById('search-input');
     const themeToggle = document.getElementById('theme-toggle');
     const noVideoResults = document.getElementById('no-video-results');
     const noLatestResults = document.getElementById('no-latest-results');
     const categoryList = document.getElementById('category-list');
+    const dynamicCategoriesContainer = document.getElementById('dynamic-categories-container'); // NEW
+    const sidebarSectionHeader = document.querySelector('.sidebar-section-header[data-section-name="categories"]'); // NEW
     const homeDashboardSection = document.getElementById('home-dashboard');
     const choirRepertoireSection = document.getElementById('choir-repertoire');
     const repertoireHeading = document.getElementById('repertoire-heading');
 
     // --- YOUR APP DATA ---
-    // The "Latest Updates" will now simply show the first 4 videos as they appear in this array.
-    // Order your videos here so the first 4 are the ones you consider "latest".
+    // IMPORTANT: The "Latest Updates" on the Home Dashboard will now simply show the
+    //            first 4 videos as they appear in this 'videos' array.
+    //            Arrange your videos in this array so the first 4 are the ones
+    //            you want to showcase as "latest".
     const appData = {
         "videos": [
-            // Place your 4 latest videos/playlists here first if you want them on the dashboard
+            // --- Place your 4 "Latest Update" videos/playlists here first ---
             { "title": "Piliin Mo Ang Pilipinas - Bing Rio-Pablico", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjZRrwQzmyTXF6-7i-uBf2MD", "category": "Choir Performances" },
             { "title": "Sa Piging Na Ito - Ferdinand M. Bautista", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjYGEP3oeqUI997uZlUdE_Pl", "category": "Filipino Music" },
             { "title": "Let My Love Be Heard - Jake Runestad", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDja1vQf7emcxikXiqSi-DrwE", "category": "Sacred Music" },
             { "title": "Oroquieta Chamber Singers", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjYEpM-UdPkGd11rzH9uiTpZ", "category": "Choir Performances" },
 
-            // Rest of your videos/playlists follow:
-			{ "title": "Kordero ng Diyos by Ryan Cayabyab", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjZFzXn2tIXc5dIxXvLr6TkK", "category": "Liturgical Music" },
-			{ "title": "The Lord Bless You and Keep You", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjbqA1a16rh_aiVV4Mc21bW5", "category": "Sacred Music" },
-			{ "title": "Gandang Sinauna at Sariwa", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjb3i5oMtXYoJiLfjpHPg5cP", "category": "Filipino Music" },
+            // --- Rest of your videos/playlists follow below ---
 			{ "title": "Humayo't Ihayag by Manoling Francisco, SJ", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDja1x6rFNhYjjjRR7iUCciuG", "category": "Filipino Music" },
+            { "title": "Kordero ng Diyos by Ryan Cayabyab", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjZFzXn2tIXc5dIxXvLr6TkK", "category": "Liturgical Music" },
+            { "title": "The Lord Bless You and Keep You", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjbqA1a16rh_aiVV4Mc21bW5", "category": "Sacred Music" },
+            { "title": "Gandang Sinauna at Sariwa", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjb3i5oMtXYoJiLfjpHPg5cP", "category": "Filipino Music" },
             { "title": "Ave Verum Corpus SATB", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjbVKjNjDbr9P77gCwt7uoNR", "category": "Liturgical Music" },
             { "title": "Abendlied", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjaoQ0wgW6n_leDwCpdhS0By", "category": "Classical Pieces" },
             { "title": "Die Himmel erzählen die Ehre Gottes, SWV 386", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjYVYufxG7rUk-A255bPQhJa", "category": "Classical Pieces" },
@@ -105,64 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // --- Render Content Function (now handles categories for repertoire and flat list for latest) ---
-    const renderItems = (itemsToRender, containerElement, noResultsElement, isCategorized = true) => {
-        containerElement.innerHTML = ''; // Clear current content
-        let totalItemsRendered = 0;
-
-        if (isCategorized) {
-            const categories = {};
-            // Group items by category
-            itemsToRender.forEach(item => {
-                const categoryName = item.category || 'Uncategorized'; // Default category
-                if (!categories[categoryName]) {
-                    categories[categoryName] = [];
-                }
-                categories[categoryName].push(item);
-            });
-
-            // Get sorted category names
-            const sortedCategoryNames = Object.keys(categories).sort((a, b) => {
-                if (a === 'Uncategorized') return 1;
-                if (b === 'Uncategorized') return -1;
-                return a.localeCompare(b);
-            });
-
-            // Render each category
-            sortedCategoryNames.forEach(categoryName => {
-                const categorySection = document.createElement('div');
-                categorySection.classList.add('content-category-section');
-
-                const categoryHeading = document.createElement('h3');
-                categoryHeading.textContent = categoryName;
-                categorySection.appendChild(categoryHeading);
-
-                const itemsGrid = document.createElement('div');
-                itemsGrid.classList.add('items-grid');
-
-                categories[categoryName].forEach(item => {
-                    const itemCard = createItemCard(item);
-                    itemsGrid.appendChild(itemCard);
-                    totalItemsRendered++;
-                });
-                categorySection.appendChild(itemsGrid);
-                containerElement.appendChild(categorySection);
-            });
-        } else { // For flat lists like "Latest Updates"
-            const itemsGrid = document.createElement('div');
-            itemsGrid.classList.add('items-grid');
-            itemsToRender.forEach(item => {
-                const itemCard = createItemCard(item);
-                itemsGrid.appendChild(itemCard);
-                totalItemsRendered++;
-            });
-            containerElement.appendChild(itemsGrid);
-        }
-
-        noResultsElement.style.display = totalItemsRendered === 0 ? 'block' : 'none';
-    };
-
-    // Helper function to create an item card (reusable)
+    // Helper function to create an item card for the main content areas
     const createItemCard = (item) => {
         const itemCard = document.createElement('div');
         itemCard.classList.add('item-card');
@@ -177,29 +124,57 @@ document.addEventListener('DOMContentLoaded', () => {
         link.rel = "noopener noreferrer"; // Security best practice
         link.textContent = 'Watch Now';
         itemCard.appendChild(link);
+
         return itemCard;
+    };
+
+    // --- Render Items for Main Content Areas (Dashboard, All Repertoire, Search Results) ---
+    const renderMainContentItems = (itemsToRender, containerElement, noResultsElement) => {
+        containerElement.innerHTML = ''; // Clear current content
+        let totalItemsRendered = 0;
+
+        // Create an items-grid div if it doesn't exist or replace its content
+        let itemsGrid = containerElement.querySelector('.items-grid');
+        if (!itemsGrid) {
+            itemsGrid = document.createElement('div');
+            itemsGrid.classList.add('items-grid');
+            containerElement.appendChild(itemsGrid);
+        } else {
+            itemsGrid.innerHTML = ''; // Clear grid content
+        }
+
+        itemsToRender.forEach(item => {
+            const itemCard = createItemCard(item);
+            itemsGrid.appendChild(itemCard);
+            totalItemsRendered++;
+        });
+
+        noResultsElement.style.display = totalItemsRendered === 0 ? 'block' : 'none';
     };
 
 
     // --- Sidebar Category List Generation ---
     const generateCategoryList = () => {
         const categories = new Set(appData.videos.map(video => video.category));
-        const sortedCategories = Array.from(categories).sort(); // Sort categories alphabetically
+        const sortedCategories = Array.from(categories).sort();
 
-        // Clear existing categories (except Home and All)
-        const existingDynamicCategories = categoryList.querySelectorAll('li:not(:first-child):not(:last-child)');
-        existingDynamicCategories.forEach(li => li.remove());
+        // Clear existing dynamic categories in the collapsible container
+        dynamicCategoriesContainer.innerHTML = '';
 
-        // Add dynamic categories
+        const ul = document.createElement('ul'); // Create a <ul> for the category links
+        ul.classList.add('category-links-list'); // Add a class for potential styling
+
         sortedCategories.forEach(category => {
             const listItem = document.createElement('li');
             const link = document.createElement('a');
             link.href = "#";
+            link.dataset.category = category; // Use data-category for filtering
             link.textContent = category;
-            link.dataset.category = category;
             listItem.appendChild(link);
-            categoryList.insertBefore(listItem, categoryList.lastElementChild); // Insert before "All Repertoire"
+            ul.appendChild(listItem);
         });
+
+        dynamicCategoriesContainer.appendChild(ul);
     };
 
 
@@ -212,6 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Remove active class from all sidebar links
         categoryList.querySelectorAll('a').forEach(link => link.classList.remove('active'));
 
+
         // Show the requested section and set active link
         if (sectionId === 'home-dashboard') {
             homeDashboardSection.style.display = 'block';
@@ -220,68 +196,94 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (sectionId === 'choir-repertoire') {
             choirRepertoireSection.style.display = 'block';
             let filteredVideos = appData.videos;
+            let activeLinkElement = null;
+
             if (category && category !== 'all') {
                 filteredVideos = appData.videos.filter(video => video.category === category);
                 repertoireHeading.textContent = `${category} Repertoire`;
-            } else {
+                activeLinkElement = document.querySelector(`a[data-category="${category}"]`);
+                // Ensure the "Categories" section is expanded when a sub-category is selected
+                sidebarSectionHeader.classList.remove('collapsed');
+                dynamicCategoriesContainer.classList.remove('collapsed');
+
+            } else { // "All Repertoire" selected
                 repertoireHeading.textContent = 'All Choir Repertoire';
+                activeLinkElement = document.querySelector('[data-category="all"]');
             }
-            renderItems(filteredVideos, videoCategoriesContainer, noVideoResults, true); // Render categorized
-            document.querySelector(`[data-category="${category || 'all'}"]`).classList.add('active');
+
+            if (activeLinkElement) {
+                activeLinkElement.classList.add('active');
+            }
+            renderMainContentItems(filteredVideos, allRepertoireGrid, noVideoResults);
         }
     };
 
     // Render Latest Videos for Dashboard (takes first 4 from the array)
     const renderLatestVideos = () => {
-        // Simply take the first 4 videos from the appData.videos array
         const latest4Videos = appData.videos.slice(0, 4);
-        renderItems(latest4Videos, latestVideosList, noLatestResults, false); // Render as flat list (not categorized)
+        renderMainContentItems(latest4Videos, latestVideosList, noLatestResults);
     };
 
 
     // --- Event Listeners ---
-    // Sidebar navigation
+    // Sidebar navigation (for Home, All Repertoire, and dynamic category links)
     categoryList.addEventListener('click', (event) => {
-        if (event.target.tagName === 'A') {
-            event.preventDefault(); // Prevent default link behavior
+        // Check if a direct link or a category link within the dynamic container was clicked
+        if (event.target.tagName === 'A' && event.target.dataset.category) {
+            event.preventDefault();
             const category = event.target.dataset.category;
             if (category === 'home') {
                 displaySection('home-dashboard');
-            } else {
+            } else { // 'all' or a specific category from the dynamic list
                 displaySection('choir-repertoire', category);
             }
         }
     });
 
-    // Search Logic (now only filters videos)
+    // NEW: Event Listener for the main "Categories" section header
+    sidebarSectionHeader.addEventListener('click', (event) => {
+        event.preventDefault(); // Prevent default link behavior
+        dynamicCategoriesContainer.classList.toggle('collapsed');
+        sidebarSectionHeader.classList.toggle('collapsed');
+    });
+
+
+    // Search Logic
     searchInput.addEventListener('keyup', () => {
         const searchTerm = searchInput.value.toLowerCase();
 
-        // Filter videos based on search term (applies to both dashboard and repertoire)
         const filteredVideos = appData.videos.filter(item =>
             item.title.toLowerCase().includes(searchTerm) ||
             (item.category && item.category.toLowerCase().includes(searchTerm))
         );
 
-        // If search term is empty, display the default section (Home or All Repertoire)
+        // If search term is empty, display the currently active section
         if (searchTerm === '') {
             const activeLink = categoryList.querySelector('a.active');
             if (activeLink && activeLink.dataset.category === 'home') {
                 displaySection('home-dashboard');
             } else {
-                displaySection('choir-repertoire', activeLink ? activeLink.dataset.category : 'all');
+                // Default to 'All Repertoire' if no category was active, or use existing active category
+                const currentCategory = activeLink ? activeLink.dataset.category : 'all';
+                displaySection('choir-repertoire', currentCategory);
             }
         } else {
-            // If there's a search term, show repertoire section and filter all videos
+            // If there's a search term, always show repertoire section and filter all videos
             homeDashboardSection.style.display = 'none';
             choirRepertoireSection.style.display = 'block';
             repertoireHeading.textContent = `Search Results for "${searchInput.value}"`;
-            renderItems(filteredVideos, videoCategoriesContainer, noVideoResults, true); // Still categorize search results
+            renderMainContentItems(filteredVideos, allRepertoireGrid, noVideoResults);
+
+            // Remove active class from all sidebar links when searching
+            categoryList.querySelectorAll('a').forEach(link => link.classList.remove('active'));
+            // Collapse the "Categories" section if it's open, but don't force it closed if user wants it open
+            // Consider keeping it open if it was already open, or based on user preference
+            // For now, let's keep it simple: just remove active classes.
         }
     });
 
 
     // --- Initial Load ---
-    generateCategoryList();
+    generateCategoryList(); // Build the sidebar categories first
     displaySection('home-dashboard'); // Show home dashboard by default on load
 });
