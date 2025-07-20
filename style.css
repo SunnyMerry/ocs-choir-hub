@@ -1,23 +1,23 @@
 :root {
     /* Light Mode Colors (ENHANCED) */
-    --background-color-light: #f4f7fa; /* Keep subtle background color */
+    --background-color-light: #f4f7fa;
     --text-color-light: #333;
-    --header-bg-light: rgba(255, 255, 255, 0.65); /* Less opaque white */
-    --card-bg-light: rgba(255, 255, 255, 0.75); /* Less opaque white */
+    --header-bg-light: rgba(255, 255, 255, 0.65);
+    --card-bg-light: rgba(255, 255, 255, 0.75);
     --border-color-light: rgba(209, 217, 230, 0.6);
     --accent-blue-light: #5a7dff;
     --accent-purple-light: #8e5aff;
-    --input-bg-light: rgba(255, 255, 255, 0.8); /* Less opaque white */
+    --input-bg-light: rgba(255, 255, 255, 0.8);
     --input-border-light: rgba(203, 214, 226, 0.7);
     --category-heading-light: #444;
-    --overlay-color-light: rgba(255, 255, 255, 0.2); /* Main body overlay, more transparent for background */
+    --overlay-color-light: rgba(255, 255, 255, 0.2);
 
     /* Sidebar and Navigation Tabs (enhanced for light mode) */
-    --sidebar-bg-light: rgba(255, 255, 255, 0.7); /* Sidebar background, translucent white */
-    --sidebar-text-light: #333; /* Dark text on light sidebar */
-    --sidebar-link-default-bg-light: rgba(255, 255, 255, 0.5); /* NEW: Default white background for non-active links */
-    --sidebar-link-hover-light: rgba(0, 0, 0, 0.08); /* Subtle darkening on hover */
-    --sidebar-link-active-light: #5a7dff; /* Active link color remains accent */
+    --sidebar-bg-light: rgba(255, 255, 255, 0.7);
+    --sidebar-text-light: #333;
+    --sidebar-link-default-bg-light: rgba(255, 255, 255, 0.5);
+    --sidebar-link-hover-light: rgba(0, 0, 0, 0.08);
+    --sidebar-link-active-light: #5a7dff;
 }
 
 [data-theme='dark'] {
@@ -167,6 +167,7 @@ body[data-theme='dark'] .theme-toggle:hover {
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     flex-shrink: 0;
+    overflow-y: auto; /* Enable scrolling for sidebar content */
 }
 
 body[data-theme='light'] .sidebar {
@@ -204,21 +205,20 @@ body[data-theme='dark'] .sidebar h3 {
     display: block;
     padding: 10px 15px;
     text-decoration: none;
-    /* color will be set based on theme */
     border-radius: 8px;
     transition: background-color 0.2s ease, color 0.2s ease;
     font-weight: 500;
 }
 
-/* NEW/MODIFIED: Sidebar link colors for light theme */
+/* Sidebar link colors for light theme */
 body[data-theme='light'] .sidebar-nav a {
-    background-color: var(--sidebar-link-default-bg-light); /* Default white background */
-    color: var(--sidebar-text-light); /* Ensure text is dark */
+    background-color: var(--sidebar-link-default-bg-light);
+    color: var(--sidebar-text-light);
 }
 
 body[data-theme='light'] .sidebar-nav a:hover {
     background-color: var(--sidebar-link-hover-light);
-    color: var(--sidebar-text-light); /* Maintain text color */
+    color: var(--sidebar-text-light);
 }
 
 body[data-theme='light'] .sidebar-nav a.active {
@@ -226,9 +226,9 @@ body[data-theme='light'] .sidebar-nav a.active {
     color: #fff;
 }
 
-/* Dark theme sidebar links (no change) */
+/* Dark theme sidebar links */
 body[data-theme='dark'] .sidebar-nav a {
-    color: inherit; /* Inherits sidebar-text-dark */
+    color: inherit;
 }
 body[data-theme='dark'] .sidebar-nav a:hover {
     background-color: var(--sidebar-link-hover-dark);
@@ -238,12 +238,107 @@ body[data-theme='dark'] .sidebar-nav a.active {
     color: #fff;
 }
 
+/* NEW: Collapsible "Categories" Section Styles */
+.sidebar-collapsible-section {
+    margin-bottom: 10px; /* Space below the entire collapsible section */
+}
+
+.sidebar-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+    /* Inherit color from sidebar text */
+    color: inherit;
+}
+
+body[data-theme='light'] .sidebar-section-header {
+    background-color: var(--sidebar-link-default-bg-light); /* Give it a similar look to other active links */
+    color: var(--sidebar-text-light);
+}
+
+body[data-theme='dark'] .sidebar-section-header {
+    background-color: transparent;
+    color: inherit;
+}
+
+.sidebar-section-header:hover {
+    background-color: var(--sidebar-link-hover-light);
+}
+body[data-theme='dark'] .sidebar-section-header:hover {
+    background-color: var(--sidebar-link-hover-dark);
+}
+
+.sidebar-section-header h3 {
+    margin: 0; /* Remove default h3 margins */
+    font-size: 1.3em; /* Match sidebar h3 size */
+    color: inherit; /* Ensure h3 color matches parent link */
+}
+
+.collapse-icon {
+    transition: transform 0.2s ease;
+    font-size: 0.8em;
+}
+
+.sidebar-section-header.collapsed .collapse-icon {
+    transform: rotate(-90deg); /* Rotate for collapsed state */
+}
+
+/* Content area for collapsible section */
+.sidebar-section-content {
+    max-height: 500px; /* Arbitrary max height for transition */
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+    opacity: 1;
+    padding-left: 10px; /* Indent content */
+    padding-top: 5px; /* Space after header */
+}
+
+.sidebar-section-content.collapsed {
+    max-height: 0;
+    opacity: 0;
+    padding-top: 0;
+}
+
+/* Styling for actual category links *inside* the collapsible section */
+#dynamic-categories-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#dynamic-categories-container li {
+    margin-bottom: 5px; /* Smaller margin for list items inside collapsible section */
+}
+
+#dynamic-categories-container li:last-child {
+    margin-bottom: 0;
+}
+
+#dynamic-categories-container a {
+    padding: 8px 15px; /* Smaller padding for these links */
+    font-size: 0.95em; /* Slightly smaller font */
+    color: inherit;
+}
+
 
 /* Main Content Area */
 .main-content {
     flex-grow: 1;
     padding: 20px 30px;
     overflow-y: auto;
+}
+
+.content-section {
+    display: none; /* Hidden by default, JS controls visibility */
+}
+
+.content-section.active {
+    display: block;
 }
 
 h2 {
@@ -297,7 +392,6 @@ body[data-theme='dark'] #search-input::placeholder {
 /* Items Grid - General Styling */
 .items-grid {
     display: grid;
-    /* Use auto-fit to prevent empty columns when there are fewer items */
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 25px;
     padding-bottom: 20px;
@@ -305,10 +399,8 @@ body[data-theme='dark'] #search-input::placeholder {
 
 /* Specific centering for the "Latest Updates" grid on the dashboard */
 #latest-videos-list.items-grid {
-    /* Set a max-width that accommodates 2 cards and 1 gap */
-    /* This prevents the grid from stretching to full width */
     max-width: calc(2 * 220px + 25px); /* 2 cards (min 220px each) + 1 gap (25px) */
-    margin: 0 auto; /* This centers the entire grid container block */
+    margin: 0 auto;
 }
 
 .item-card {
@@ -404,25 +496,6 @@ body[data-theme='dark'] .no-results-message {
     color: #f0f0f0;
 }
 
-/* Video Category Specific Styles (now for repertoire section) */
-.content-category-section {
-    margin-top: 30px;
-}
-
-.content-category-section h3 {
-    font-size: 1.4em;
-    margin-bottom: 15px;
-    color: #fff;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-    padding-bottom: 5px;
-}
-
-body[data-theme='dark'] .content-category-section h3 {
-    color: #fff;
-    border-color: rgba(255, 255, 255, 0.2);
-}
-
 /* Footer */
 footer {
     padding: 20px 0;
@@ -458,8 +531,7 @@ body[data-theme='dark'] footer {
         padding: 15px 20px;
     }
     #latest-videos-list.items-grid {
-        /* Re-calculate max-width for 2 columns with new min width */
-        max-width: calc(2 * 200px + 20px); /* 2 cards (min 200px each) + 1 gap (20px) */
+        max-width: calc(2 * 200px + 20px);
     }
 }
 
@@ -485,13 +557,12 @@ body[data-theme='dark'] footer {
         padding: 15px 10px;
     }
     .items-grid {
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* Adjusted for smaller cards */
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
         gap: 15px;
     }
     #latest-videos-list.items-grid {
-        /* On smaller screens, force to a single column and center that column */
-        grid-template-columns: 1fr; /* Ensures only one column */
-        max-width: 160px; /* One card (min 160px) */
+        grid-template-columns: 1fr;
+        max-width: 160px;
     }
     header h1 {
         font-size: 1.6em;
@@ -508,6 +579,18 @@ body[data-theme='dark'] footer {
     }
     .item-card h3 {
         font-size: 1em;
+    }
+    /* Hide sidebar category content on small screens by default */
+    .sidebar-section-content {
+        max-height: 0;
+        opacity: 0;
+        padding-top: 0;
+    }
+    .sidebar-section-header.collapsed .collapse-icon {
+        transform: rotate(0deg); /* No initial rotation */
+    }
+    .sidebar-section-header.expanded .collapse-icon {
+        transform: rotate(90deg); /* Rotate when expanded on mobile */
     }
 }
 
@@ -538,6 +621,6 @@ body[data-theme='dark'] footer {
         align-items: center;
     }
     #latest-videos-list.items-grid {
-        max-width: 160px; /* Still one column centered */
+        max-width: 160px;
     }
 }
