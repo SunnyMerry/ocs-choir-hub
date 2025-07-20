@@ -9,6 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Replace "General Choir" or other placeholders with your desired category names.
     const appData = {
         "videos": [
+            { "title": "Piliin Mo Ang Pilipinas - Bing Rio-Pablico", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjZRrwQzmyTXF6-7i-uBf2MD", "category": "Filipino Music" },
+            { "title": "Sa Piging Na Ito - Ferdinand M. Bautista", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjYGEP3oeqUI997uZlUdE_Pl", "category": "Filipino Music" },
+            { "title": "Let My Love Be Heard - Jake Runestad", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDja1vQf7emcxikXiqSi-DrwE", "category": "Sacred Music" },
+            { "title": "Oroquieta Chamber Singers", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjYEpM-UdPkGd11rzH9uiTpZ", "category": "Choir Performances" },
             { "title": "Ave Verum Corpus SATB", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjbVKjNjDbr9P77gCwt7uoNR", "category": "Liturgical Music" },
             { "title": "Abendlied", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjaoQ0wgW6n_leDwCpdhS0By", "category": "Classical Pieces" },
             { "title": "Die Himmel erzählen die Ehre Gottes, SWV 386", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjYVYufxG7rUk-A255bPQhJa", "category": "Classical Pieces" },
@@ -70,10 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
             { "title": "The Road Home – Michael Dennis Browne", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjY2zt5UD_l9hTjL2HroBik-", "category": "Sacred Music" },
             { "title": "Amor De Mi Alma (You Are the Love of My Soul)", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjbv6pSZFgR9-EFYrBLKu_uQ", "category": "Secular Songs" },
             { "title": "Jagdlied - Mendelssohn Op.59-6", "link": "https://www.youtube.com/watch?v=EXAMPLE1", "category": "Classical Pieces" }, // This was the playlist link you provided
-            { "title": "Oroquieta Chamber Singers", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjYEpM-UdPkGd11rzH9uiTpZ", "category": "Choir Performances" },
-            { "title": "Let My Love Be Heard - Jake Runestad", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDja1vQf7emcxikXiqSi-DrwE", "category": "Sacred Music" },
-            { "title": "Sa Piging Na Ito - Ferdinand M. Bautista", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjYGEP3oeqUI997uZlUdE_Pl", "category": "Filipino Music" },
-            { "title": "Piliin Mo Ang Pilipinas - Bing Rio-Pablico", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjZRrwQzmyTXF6-7i-uBf2MD", "category": "Filipino Music" }
         ]
     };
     // --- END OF YOUR APP DATA ---
