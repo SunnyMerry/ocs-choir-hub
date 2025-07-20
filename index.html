@@ -24,10 +24,17 @@
     <div class="app-container">
         <aside class="sidebar" id="sidebar">
             <nav class="sidebar-nav">
-                <h3>Categories</h3>
-                <ul id="category-list">
+                <h3>Menu</h3> <ul id="category-list">
                     <li><a href="#" data-category="home" class="active">Home Dashboard</a></li>
-                    <!-- Categories will be dynamically loaded here by JavaScript -->
+                    
+                    <li class="sidebar-collapsible-section">
+                        <a href="#" class="sidebar-section-header" data-section-name="categories">
+                            <h3>Categories <span class="collapse-icon">▼</span></h3>
+                        </a>
+                        <div class="sidebar-section-content" id="dynamic-categories-container">
+                            </div>
+                    </li>
+                    
                     <li><a href="#" data-category="all">All Repertoire</a></li>
                 </ul>
             </nav>
@@ -38,22 +45,18 @@
                 <input type="text" id="search-input" placeholder="Search videos or playlists...">
             </section>
 
-            <!-- Home Dashboard Section -->
             <section id="home-dashboard" class="content-section">
                 <h2>Latest Updates</h2>
                 <div class="items-grid" id="latest-videos-list">
-                    <!-- Latest videos will be loaded here by JavaScript -->
-                </div>
+                    </div>
                 <p id="no-latest-results" class="no-results-message" style="display:none;">No latest videos found.</p>
             </section>
 
-            <!-- Choir Repertoire Section (filtered by sidebar) -->
             <section id="choir-repertoire" class="content-section" style="display:none;">
-                <h2 id="repertoire-heading">Choir Repertoire</h2>
-                <div id="video-categories-container">
-                    <!-- Categorized videos will be loaded here by JavaScript -->
-                </div>
-                <p id="no-video-results" class="no-results-message" style="display:none;">No videos or playlists found matching your search criteria.</p>
+                <h2 id="repertoire-heading">All Choir Repertoire</h2>
+                <div class="items-grid" id="all-repertoire-grid">
+                    </div>
+                <p id="no-video-results" class="no-results-message" style="display:none;">No videos or playlists found matching your criteria.</p>
             </section>
         </main>
     </div>
