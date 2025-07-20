@@ -1,20 +1,23 @@
 :root {
-    /* Light Mode Colors */
-    --background-color-light: #f4f7fa;
+    /* Light Mode Colors (ENHANCED) */
+    --background-color-light: #f4f7fa; /* Keep subtle background color */
     --text-color-light: #333;
-    --header-bg-light: rgba(255, 255, 255, 0.8);
-    --card-bg-light: rgba(255, 255, 255, 0.85);
+    --header-bg-light: rgba(255, 255, 255, 0.65); /* Less opaque white */
+    --card-bg-light: rgba(255, 255, 255, 0.75); /* Less opaque white */
     --border-color-light: rgba(209, 217, 230, 0.6);
     --accent-blue-light: #5a7dff;
     --accent-purple-light: #8e5aff;
-    --input-bg-light: rgba(255, 255, 255, 0.9);
+    --input-bg-light: rgba(255, 255, 255, 0.8); /* Less opaque white */
     --input-border-light: rgba(203, 214, 226, 0.7);
     --category-heading-light: #444;
-    --overlay-color-light: rgba(255, 255, 255, 0.3);
-    --sidebar-bg-light: rgba(240, 243, 246, 0.9); /* Lighter sidebar */
-    --sidebar-text-light: #333;
-    --sidebar-link-hover-light: rgba(0, 0, 0, 0.08);
-    --sidebar-link-active-light: #5a7dff;
+    --overlay-color-light: rgba(255, 255, 255, 0.2); /* Main body overlay, more transparent for background */
+
+    /* Sidebar and Navigation Tabs (enhanced for light mode) */
+    --sidebar-bg-light: rgba(255, 255, 255, 0.7); /* Sidebar background, translucent white */
+    --sidebar-text-light: #333; /* Dark text on light sidebar */
+    --sidebar-link-default-bg-light: rgba(255, 255, 255, 0.5); /* NEW: Default white background for non-active links */
+    --sidebar-link-hover-light: rgba(0, 0, 0, 0.08); /* Subtle darkening on hover */
+    --sidebar-link-active-light: #5a7dff; /* Active link color remains accent */
 }
 
 [data-theme='dark'] {
@@ -30,7 +33,7 @@
     --input-border-dark: rgba(74, 92, 140, 0.7);
     --category-heading-dark: #c0c0c0;
     --overlay-color-dark: rgba(0, 0, 0, 0.5);
-    --sidebar-bg-dark: rgba(26, 26, 46, 0.9); /* Darker sidebar */
+    --sidebar-bg-dark: rgba(26, 26, 46, 0.9);
     --sidebar-text-dark: #e0e0e0;
     --sidebar-link-hover-dark: rgba(255, 255, 255, 0.08);
     --sidebar-link-active-dark: #7a9eff;
@@ -80,9 +83,9 @@ body[data-theme='dark']::before {
 /* Main App Container (for sidebar and content) */
 .app-container {
     display: flex;
-    flex-grow: 1; /* Allows it to take remaining vertical space */
-    position: relative; /* For sidebar positioning if needed */
-    z-index: 2; /* Ensure content is above overlay */
+    flex-grow: 1;
+    position: relative;
+    z-index: 2;
 }
 
 .container {
@@ -157,13 +160,13 @@ body[data-theme='dark'] .theme-toggle:hover {
 
 /* Sidebar */
 .sidebar {
-    width: 250px; /* Fixed width for sidebar */
+    width: 250px;
     padding: 20px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease, transform 0.3s ease;
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
-    flex-shrink: 0; /* Prevent sidebar from shrinking */
+    flex-shrink: 0;
 }
 
 body[data-theme='light'] .sidebar {
@@ -201,18 +204,21 @@ body[data-theme='dark'] .sidebar h3 {
     display: block;
     padding: 10px 15px;
     text-decoration: none;
-    color: inherit; /* Inherit from sidebar text */
+    /* color will be set based on theme */
     border-radius: 8px;
     transition: background-color 0.2s ease, color 0.2s ease;
     font-weight: 500;
 }
 
-body[data-theme='light'] .sidebar-nav a:hover {
-    background-color: var(--sidebar-link-hover-light);
+/* NEW/MODIFIED: Sidebar link colors for light theme */
+body[data-theme='light'] .sidebar-nav a {
+    background-color: var(--sidebar-link-default-bg-light); /* Default white background */
+    color: var(--sidebar-text-light); /* Ensure text is dark */
 }
 
-body[data-theme='dark'] .sidebar-nav a:hover {
-    background-color: var(--sidebar-link-hover-dark);
+body[data-theme='light'] .sidebar-nav a:hover {
+    background-color: var(--sidebar-link-hover-light);
+    color: var(--sidebar-text-light); /* Maintain text color */
 }
 
 body[data-theme='light'] .sidebar-nav a.active {
@@ -220,16 +226,24 @@ body[data-theme='light'] .sidebar-nav a.active {
     color: #fff;
 }
 
+/* Dark theme sidebar links (no change) */
+body[data-theme='dark'] .sidebar-nav a {
+    color: inherit; /* Inherits sidebar-text-dark */
+}
+body[data-theme='dark'] .sidebar-nav a:hover {
+    background-color: var(--sidebar-link-hover-dark);
+}
 body[data-theme='dark'] .sidebar-nav a.active {
     background-color: var(--sidebar-link-active-dark);
     color: #fff;
 }
 
+
 /* Main Content Area */
 .main-content {
     flex-grow: 1;
-    padding: 20px 30px; /* Padding for the main content area */
-    overflow-y: auto; /* Enable scrolling for content if it overflows */
+    padding: 20px 30px;
+    overflow-y: auto;
 }
 
 h2 {
@@ -280,12 +294,21 @@ body[data-theme='dark'] #search-input::placeholder {
     color: var(--input-border-dark);
 }
 
-/* Items Grid */
+/* Items Grid - General Styling */
 .items-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    /* Use auto-fit to prevent empty columns when there are fewer items */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 25px;
     padding-bottom: 20px;
+}
+
+/* Specific centering for the "Latest Updates" grid on the dashboard */
+#latest-videos-list.items-grid {
+    /* Set a max-width that accommodates 2 cards and 1 gap */
+    /* This prevents the grid from stretching to full width */
+    max-width: calc(2 * 220px + 25px); /* 2 cards (min 220px each) + 1 gap (25px) */
+    margin: 0 auto; /* This centers the entire grid container block */
 }
 
 .item-card {
@@ -407,7 +430,7 @@ footer {
     font-size: 0.9em;
     border-top: 1px solid;
     transition: border-color 0.3s ease;
-    margin-top: auto; /* Push footer to bottom */
+    margin-top: auto;
     background-color: rgba(0, 0, 0, 0.4);
     color: #f0f0f0;
     backdrop-filter: blur(3px);
@@ -425,28 +448,32 @@ body[data-theme='dark'] footer {
 /* Responsive adjustments */
 @media (max-width: 1024px) {
     .items-grid {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 20px;
     }
     .sidebar {
-        width: 200px; /* Smaller sidebar on tablets */
+        width: 200px;
     }
     .main-content {
         padding: 15px 20px;
+    }
+    #latest-videos-list.items-grid {
+        /* Re-calculate max-width for 2 columns with new min width */
+        max-width: calc(2 * 200px + 20px); /* 2 cards (min 200px each) + 1 gap (20px) */
     }
 }
 
 @media (max-width: 768px) {
     .app-container {
-        flex-direction: column; /* Stack sidebar and content on small screens */
+        flex-direction: column;
     }
     .sidebar {
-        width: 100%; /* Full width sidebar on mobile */
+        width: 100%;
         padding: 15px;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
     .sidebar-nav ul {
-        display: flex; /* Make categories horizontal on mobile */
+        display: flex;
         flex-wrap: wrap;
         justify-content: center;
         gap: 10px;
@@ -458,8 +485,13 @@ body[data-theme='dark'] footer {
         padding: 15px 10px;
     }
     .items-grid {
-        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); /* Adjust for mobile grid */
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* Adjusted for smaller cards */
         gap: 15px;
+    }
+    #latest-videos-list.items-grid {
+        /* On smaller screens, force to a single column and center that column */
+        grid-template-columns: 1fr; /* Ensures only one column */
+        max-width: 160px; /* One card (min 160px) */
     }
     header h1 {
         font-size: 1.6em;
@@ -481,7 +513,7 @@ body[data-theme='dark'] footer {
 
 @media (max-width: 480px) {
     .items-grid {
-        grid-template-columns: 1fr; /* Single column on very small screens */
+        grid-template-columns: 1fr;
         gap: 15px;
     }
     .container {
@@ -502,7 +534,10 @@ body[data-theme='dark'] footer {
         margin-top: -40px;
     }
     .sidebar-nav ul {
-        flex-direction: column; /* Stack categories vertically on very small screens */
+        flex-direction: column;
         align-items: center;
+    }
+    #latest-videos-list.items-grid {
+        max-width: 160px; /* Still one column centered */
     }
 }
