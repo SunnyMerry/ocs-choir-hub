@@ -21,11 +21,13 @@ document.addEventListener('DOMContentLoaded', () => {
         "videos": [
             // --- Place your 4 "Latest Update" videos/playlists here first ---
             { "title": "Piliin Mo Ang Pilipinas - Bing Rio-Pablico", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjZRrwQzmyTXF6-7i-uBf2MD", "category": "Choir Performances" },
-            { "title": "Sa Piging Na Ito - Ferdinand M. Bautista", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjYGEP3oeqUI997uZlUdE_Pl", "category": "Filipino Music" },
+            { "title": "LUX AETERNA – Choral Practice Video | Elgar’s Nimrod with Requiem Mass Text (Arr. John Cameron) | SATB Parts", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjYdFZ_3pw4aGaQmpYSjZcF8", "category": "Sacred Music" },
             { "title": "Let My Love Be Heard - Jake Runestad", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDja1vQf7emcxikXiqSi-DrwE", "category": "Sacred Music" },
-            { "title": "Oroquieta Chamber Singers", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjYEpM-UdPkGd11rzH9uiTpZ", "category": "Choir Performances" },
+            { "title": "Panunumpa – A. Joson (Fr. JBoy Gonzales, SJ) | Choir Practice Track", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjYi1iSpfcH38EfA6UtojvA3", "category": "Filipino Music" },
 
             // --- Rest of your videos/playlists follow below ---
+			{ "title": "Sa Piging Na Ito - Ferdinand M. Bautista", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjYGEP3oeqUI997uZlUdE_Pl", "category": "Filipino Music" },
+			{ "title": "Oroquieta Chamber Singers", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjYEpM-UdPkGd11rzH9uiTpZ", "category": "Choir Performances" },
 			{ "title": "Humayo't Ihayag by Manoling Francisco, SJ", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDja1x6rFNhYjjjRR7iUCciuG", "category": "Filipino Music" },
             { "title": "Kordero ng Diyos by Ryan Cayabyab", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjZFzXn2tIXc5dIxXvLr6TkK", "category": "Liturgical Music" },
             { "title": "The Lord Bless You and Keep You", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjbqA1a16rh_aiVV4Mc21bW5", "category": "Sacred Music" },
