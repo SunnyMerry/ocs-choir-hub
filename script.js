@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const noVideoResults = document.getElementById('no-video-results');
     const noLatestResults = document.getElementById('no-latest-results');
     const categoryList = document.getElementById('category-list');
-    const dynamicCategoriesContainer = document.getElementById('dynamic-categories-container'); // NEW
-    const sidebarSectionHeader = document.querySelector('.sidebar-section-header[data-section-name="categories"]'); // NEW
+    const dynamicCategoriesContainer = document.getElementById('dynamic-categories-container');
+    const sidebarSectionHeader = document.querySelector('.sidebar-section-header[data-section-name="categories"]');
     const homeDashboardSection = document.getElementById('home-dashboard');
     const choirRepertoireSection = document.getElementById('choir-repertoire');
     const repertoireHeading = document.getElementById('repertoire-heading');
@@ -21,12 +21,12 @@ document.addEventListener('DOMContentLoaded', () => {
         "videos": [
             // --- Place your 4 "Latest Update" videos/playlists here first ---
             { "title": "Piliin Mo Ang Pilipinas - Bing Rio-Pablico", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjZRrwQzmyTXF6-7i-uBf2MD", "category": "Choir Performances" },
-            { "title": "LUX AETERNA – Choral Practice Video | Elgar’s Nimrod with Requiem Mass Text (Arr. John Cameron) | SATB Parts", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjYdFZ_3pw4aGaQmpYSjZcF8", "category": "Sacred Music" },
+            { "title": "LUX AETERNA – Elgar’s Nimrod with Requiem Mass Text (Arr. John Cameron", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjYdFZ_3pw4aGaQmpYSjZcF8", "category": "Sacred Music" },
             { "title": "Let My Love Be Heard - Jake Runestad", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDja1vQf7emcxikXiqSi-DrwE", "category": "Sacred Music" },
-            { "title": "Panunumpa – A. Joson (Fr. JBoy Gonzales, SJ) | Choir Practice Track", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjYi1iSpfcH38EfA6UtojvA3", "category": "Filipino Music" },
+            { "title": "Panunumpa – A. Joson (Fr. JBoy Gonzales, SJ)", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjYi1iSpfcH38EfA6UtojvA3", "category": "Filipino Music" },
 
             // --- Rest of your videos/playlists follow below ---
-			{ "title": "Sa Piging Na Ito - Ferdinand M. Bautista", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjYGEP3oeqUI997uZlUdE_Pl", "category": "Filipino Music" },
+            { "title": "Sa Piging Na Ito - Ferdinand M. Bautista", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjYGEP3oeqUI997uZlUdE_Pl", "category": "Filipino Music" },
 			{ "title": "Oroquieta Chamber Singers", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjYEpM-UdPkGd11rzH9uiTpZ", "category": "Choir Performances" },
 			{ "title": "Humayo't Ihayag by Manoling Francisco, SJ", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDja1x6rFNhYjjjRR7iUCciuG", "category": "Filipino Music" },
             { "title": "Kordero ng Diyos by Ryan Cayabyab", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjZFzXn2tIXc5dIxXvLr6TkK", "category": "Liturgical Music" },
@@ -86,7 +86,10 @@ document.addEventListener('DOMContentLoaded', () => {
             { "title": "No. 53: Worthy is the Lamb That was Slain - Handel's Messiah", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjZemOPcqf_kGw5Zgjzrk7MA", "category": "Classical Pieces" },
             { "title": "The Road Home – Michael Dennis Browne", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjY2zt5UD_l9hTjL2HroBik-", "category": "Sacred Music" },
             { "title": "Amor De Mi Alma (You Are the Love of My Soul)", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjbv6pSZFgR9-EFYrBLKu_uQ", "category": "Secular Songs" },
-            { "title": "Jagdlied - Mendelssohn Op.59-6", "link": "https://www.youtube.com/watch?v=EXAMPLE1", "category": "Classical Pieces" }
+            { "title": "Jagdlied - Mendelssohn Op.59-6", "link": "https://www.youtube.com/watch?v=EXAMPLE1", "category": "Classical Pieces" },
+            // NEW: CONCERT PERFORMANCE CATEGORY
+            { "title": "Let My Love Be Heard - Jake Runestad", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDja1vQf7emcxikXiqSi-DrwE", "category": "Concert Performance" },
+            { "title": "Abendlied", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjaoQ0wgW6n_leDwCpdhS0By", "category": "Concert Performance" }
         ]
     };
     // --- END OF YOUR APP DATA ---
@@ -278,9 +281,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Remove active class from all sidebar links when searching
             categoryList.querySelectorAll('a').forEach(link => link.classList.remove('active'));
-            // Collapse the "Categories" section if it's open, but don't force it closed if user wants it open
-            // Consider keeping it open if it was already open, or based on user preference
-            // For now, let's keep it simple: just remove active classes.
         }
     });
 
