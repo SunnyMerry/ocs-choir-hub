@@ -20,13 +20,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const appData = {
         "videos": [
             // --- Place your 4 "Latest Update" videos/playlists here first ---
-            { "title": "Piliin Mo Ang Pilipinas - Bing Rio-Pablico", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjZRrwQzmyTXF6-7i-uBf2MD", "category": "Choir Performances" },
-            { "title": "LUX AETERNA – Elgar’s Nimrod with Requiem Mass Text (Arr. John Cameron", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjYdFZ_3pw4aGaQmpYSjZcF8", "category": "Sacred Music" },
-            { "title": "Let My Love Be Heard - Jake Runestad", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDja1vQf7emcxikXiqSi-DrwE", "category": "Sacred Music" },
-            { "title": "Panunumpa – A. Joson (Fr. JBoy Gonzales, SJ)", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjYi1iSpfcH38EfA6UtojvA3", "category": "Filipino Music" },
-
+ 			{ "title": "Himno ng Diosesis ng Lucena (Musika at Ayos: Naldy A. Rodriguez | Titik: Dr. Palermo Salvacion)", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjZLtiJ8Ww9TUG7--L1xFUeW", "category": "Filipino Music" },
+			{ "title": "Banal Ka (Sanctus)", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjbOEEcg7aD545XAiw9kJquK", "category": "Liturgical Music" },
+			{ "title": "Paggugunita (Arr. Rodelia Austria-Valeriano)", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjZjQKc6rMVqBj5ZDpO79DpC", "category": "Filipino Music" },
+			{ "title": "Jingle Bells Calypso (Arr. Leo M. Teller, based on J. Pierpont)", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjbNdl7rUlYE4xdrukpVPeeN", "category": "Christmas Carols" },
             // --- Rest of your videos/playlists follow below ---
-            { "title": "Sa Piging Na Ito - Ferdinand M. Bautista", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjYGEP3oeqUI997uZlUdE_Pl", "category": "Filipino Music" },
 			{ "title": "Oroquieta Chamber Singers", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjYEpM-UdPkGd11rzH9uiTpZ", "category": "Choir Performances" },
 			{ "title": "Humayo't Ihayag by Manoling Francisco, SJ", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDja1x6rFNhYjjjRR7iUCciuG", "category": "Filipino Music" },
             { "title": "Kordero ng Diyos by Ryan Cayabyab", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjZFzXn2tIXc5dIxXvLr6TkK", "category": "Liturgical Music" },
@@ -87,9 +85,25 @@ document.addEventListener('DOMContentLoaded', () => {
             { "title": "The Road Home – Michael Dennis Browne", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjY2zt5UD_l9hTjL2HroBik-", "category": "Sacred Music" },
             { "title": "Amor De Mi Alma (You Are the Love of My Soul)", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjbv6pSZFgR9-EFYrBLKu_uQ", "category": "Secular Songs" },
             { "title": "Jagdlied - Mendelssohn Op.59-6", "link": "https://www.youtube.com/watch?v=EXAMPLE1", "category": "Classical Pieces" },
+			{ "title": "Let My Love Be Heard - Jake Runestad", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDja1vQf7emcxikXiqSi-DrwE", "category": "Sacred Music" },
+			{ "title": "Sa Piging Na Ito - Ferdinand M. Bautista", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjYGEP3oeqUI997uZlUdE_Pl", "category": "Filipino Music" },
+			{ "title": "Piliin Mo Ang Pilipinas - Bing Rio-Pablico", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjZRrwQzmyTXF6-7i-uBf2MD", "category": "Choir Performances" },
+			{ "title": "LUX AETERNA – Elgar’s Nimrod with Requiem Mass Text (Arr. John Cameron", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjYdFZ_3pw4aGaQmpYSjZcF8", "category": "Sacred Music" },
+			{ "title": "Panunumpa – A. Joson (Fr. JBoy Gonzales, SJ)", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjYi1iSpfcH38EfA6UtojvA3", "category": "Filipino Music" },
+			{ "title": "Bundok Banahaw (Arr. Fabian Obispo)", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjZG_Ak5XgysF4peIUnkA2xQ", "category": "Filipino Music" },
+			{ "title": "Dahil sa 'Yo - F. Obispo Jr.", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjaempjxQzDGyq7jSr9CmgjW", "category": "Filipino Music" },
+			{ "title": "Paggugunita (Arr. Rodelia Austria-Valeriano)", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjZjQKc6rMVqBj5ZDpO79DpC", "category": "Filipino Music" },
+			{ "title": "Gapas (Eudenice V. Palaruan)", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjakKonBXmCqWFBEG9K57n_h", "category": "Filipino Music" },
+			{ "title": "Jingle Bells Calypso (Arr. Leo M. Teller, based on J. Pierpont)", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjbNdl7rUlYE4xdrukpVPeeN", "category": "Christmas Carols" },
+			{ "title": "Himno ng Diosesis ng Lucena (Musika at Ayos: Naldy A. Rodriguez | Titik: Dr. Palermo Salvacion)", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjZLtiJ8Ww9TUG7--L1xFUeW", "category": "Filipino Music" },
+			{ "title": "Banal Ka (Sanctus)", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjbOEEcg7aD545XAiw9kJquK", "category": "Liturgical Music" },
+			{ "title": "Metropop Medley (Arr. Darren Vega)", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjZ3CyIqZSt3FV0L9WH4l6A0", "category": "Concert Performance" },
+			{ "title": "Golden (Words & Music by EJAE and Mark Sonnenblick | Arr. Emmanuel Cañazares)", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjZLRxOVnxjYq3C86J28YbQE", "category": "Concert Performance" },
             // NEW: CONCERT PERFORMANCE CATEGORY
             { "title": "Let My Love Be Heard - Jake Runestad", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDja1vQf7emcxikXiqSi-DrwE", "category": "Concert Performance" },
-            { "title": "Abendlied", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjaoQ0wgW6n_leDwCpdhS0By", "category": "Concert Performance" }
+            { "title": "Abendlied", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjaoQ0wgW6n_leDwCpdhS0By", "category": "Concert Performance" },
+			{ "title": "Amor De Mi Alma (You Are the Love of My Soul)", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjbv6pSZFgR9-EFYrBLKu_uQ", "category": "Concert Performance" },
+			{ "title": "The Road Home – Michael Dennis Browne", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjY2zt5UD_l9hTjL2HroBik-", "category": "Sacred Music" }
         ]
     };
     // --- END OF YOUR APP DATA ---
