@@ -18,10 +18,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const appData = {
         "latestUpdates": [
             // List the titles of the 4 videos you want to showcase as "Latest Updates"
-            "Himno ng Diosesis ng Lucena (Musika at Ayos: Naldy A. Rodriguez | Titik: Dr. Palermo Salvacion)",
-            "Banal Ka (Sanctus)",
-            "Paggugunita (Arr. Rodelia Austria-Valeriano)",
-            "Jingle Bells Calypso (Arr. Leo M. Teller, based on J. Pierpont)"
+            "The Road Home – Michael Dennis Browne",
+            "Shall We Gather at the River – Robert Lowry (Arr. Blake Morgan)",
+            "Ave Maris Stella – Philip W. Stopford",
+            "Let My Love Be Heard - Jake Runestad",
+			"Oroquieta Chamber Singers Tingog Sorsoganon 2026",
+			"Ang Puso Ko’y Nagpupuri (Magnificat) – Eduardo Hontiveros, SJ (Arr. Paulo Tirol)"
         ],
         "categories": {
             "Filipino Music": [
@@ -68,7 +70,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 { "title": "Santo - G. Torres", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjZ1BUv4FTWlE4oQ2X36UeOI" },
                 { "title": "Tinapay At Alak Naming Hatid - L. Delgado", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjZihcRspVwaxqHwSkdMpxif" },
                 { "title": "Papuri sa Diyos - Misa Birhen ng Antipolo (Gloria)- Consolacion II", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjb3p73vw-3X2oVGKipnzhF0" },
-                { "title": "Ang Pagkabuhay ni Hesus | Misa Delgado Book IV", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjZRgQ2AFBrNW32_dfZsm2H5" }
+                { "title": "Ang Pagkabuhay ni Hesus | Misa Delgado Book IV", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjZRgQ2AFBrNW32_dfZsm2H5" },
+				{ "title": "Ang Puso Ko’y Nagpupuri (Magnificat) – Eduardo Hontiveros, SJ (Arr. Paulo Tirol)", "link": "https://www.youtube.com/playlist?list=PLNKH2vfzS4ow" }
             ],
             "Christmas Carols": [
                 { "title": "Jingle Bells Calypso (Arr. Leo M. Teller, based on J. Pierpont)", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjbNdl7rUlYE4xdrukpVPeeN" },
@@ -108,7 +111,8 @@ document.addEventListener('DOMContentLoaded', () => {
             ],
             "Choir Performances": [
                 { "title": "Oroquieta Chamber Singers", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjYEpM-UdPkGd11rzH9uiTpZ" },
-                { "title": "Piliin Mo Ang Pilipinas - Bing Rio-Pablico", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjZRrwQzmyTXF6-7i-uBf2MD" }
+                { "title": "Piliin Mo Ang Pilipinas - Bing Rio-Pablico", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjZRrwQzmyTXF6-7i-uBf2MD" },
+				{ "title": "Oroquieta Chamber Singers Tingog Sorsoganon 2026", "link": "https://www.youtube.com/playlist?list=PLM_4Sp3vQZ4A" }
             ],
             "Concert Performance": [
                 { "title": "Metropop Medley (Arr. Darren Vega)", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjZ3CyIqZSt3FV0L9WH4l6A0" },
@@ -117,6 +121,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 { "title": "Abendlied", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjaoQ0wgW6n_leDwCpdhS0By" },
                 { "title": "Amor De Mi Alma (You Are the Love of My Soul)", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjbv6pSZFgR9-EFYrBLKu_uQ" },
 				{ "title": "The Road Home – Michael Dennis Browne", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjY2zt5UD_l9hTjL2HroBik-" }
+            ],
+			"Shall We Gather At the River Concert": [
+                { "title": "The Road Home – Michael Dennis Browne", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjY2zt5UD_l9hTjL2HroBik-" },
+                { "title": "Shall We Gather at the River – Robert Lowry (Arr. Blake Morgan)", "link": "https://www.youtube.com/playlist?list=PLLUjQbX5Hgu8" },
+                { "title": "Ave Maris Stella – Philip W. Stopford", "link": "https://www.youtube.com/playlist?list=PLUZuQD-cigAo" },
+                { "title": "Let My Love Be Heard - Jake Runestad", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDja1vQf7emcxikXiqSi-DrwE" },
+                { "title": "Inang Mahal – Raymund Julius Palmares / Emmanuel Cañazares", "link": "https://www.youtube.com/playlist?list=PLPxaCludD-JQ" }
             ]
         }
     };
