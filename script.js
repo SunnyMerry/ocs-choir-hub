@@ -46,7 +46,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 { "title": "Panunumpa – A. Joson (Fr. JBoy Gonzales, SJ)", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjYi1iSpfcH38EfA6UtojvA3" },
                 { "title": "Bundok Banahaw (Arr. Fabian Obispo)", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjZG_Ak5XgysF4peIUnkA2xQ" },
                 { "title": "Dahil sa 'Yo - F. Obispo Jr.", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjaempjxQzDGyq7jSr9CmgjW" },
-                { "title": "Gapas (Eudenice V. Palaruan)", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjakKonBXmCqWFBEG9K57n_h" }
+                { "title": "Gapas (Eudenice V. Palaruan)", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjakKonBXmCqWFBEG9K57n_h" },
+				{ "title": "Kailangan Kita – Ogie Alcasid (Arr. Lester Delgado)", "link": "https://www.youtube.com/playlist?list=PLCBj_iI8ySEs" },
+				{ "title": "Ang Pag-Ibig – Ferdinand Bautista (Arr. Jerylle P. Bantuan)", "link": "https://www.youtube.com/playlist?list=PLAdNPGNWfh2Q" }
             ],
             "Liturgical Music": [
                 { "title": "Banal Ka (Sanctus)", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjbOEEcg7aD545XAiw9kJquK" },
@@ -71,7 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 { "title": "Tinapay At Alak Naming Hatid - L. Delgado", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjZihcRspVwaxqHwSkdMpxif" },
                 { "title": "Papuri sa Diyos - Misa Birhen ng Antipolo (Gloria)- Consolacion II", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjb3p73vw-3X2oVGKipnzhF0" },
                 { "title": "Ang Pagkabuhay ni Hesus | Misa Delgado Book IV", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjZRgQ2AFBrNW32_dfZsm2H5" },
-				{ "title": "Ang Puso Ko’y Nagpupuri (Magnificat) – Eduardo Hontiveros, SJ (Arr. Paulo Tirol)", "link": "https://www.youtube.com/playlist?list=PLNKH2vfzS4ow" }
+				{ "title": "Ang Puso Ko’y Nagpupuri (Magnificat) – Eduardo Hontiveros, SJ (Arr. Paulo Tirol)", "link": "https://www.youtube.com/playlist?list=PLNKH2vfzS4ow" },
+				{ "title": "Pagmamahal sa Panginoon – E.P. Hontiveros, SJ (Arr. Dennis Domingo Matuceño)", "link": "https://www.youtube.com/playlist?list=PLPrpclnZX-U8" },
+				{ "title": "Memorare (Communion Song for Mama Mary) – Ryan Cayabyab", "link": "https://www.youtube.com/playlist?list=PLXiuZLHAZ5ng" }
             ],
             "Christmas Carols": [
                 { "title": "Jingle Bells Calypso (Arr. Leo M. Teller, based on J. Pierpont)", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjbNdl7rUlYE4xdrukpVPeeN" },
@@ -83,7 +87,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 { "title": "A Merry Christmas - Arthur Warrell", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjYcUYACct23S6SCVaYQE6gb" },
                 { "title": "Silent Night - Franz Xaver Gruber", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjZDX49ryy023TmaIvRBoaj2" },
                 { "title": "O Come, All Ye Faithful - John F. Wade", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjZ5_sj1HI8ae_EGJuCSDNIZ" },
-				{ "title": "Tanging Hiling – Grijaldo / Alcala", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjapLhE4b24mxnZCSpCXrCbC" }
+				{ "title": "Tanging Hiling – Grijaldo / Alcala", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjapLhE4b24mxnZCSpCXrCbC" },
+				{ "title": "We Shall Light a Thousand Candles – David Rasbach", "link": "https://www.youtube.com/playlist?list=PLSvF9RvDB59I" }
             ],
             "Sacred Music": [
                 { "title": "The Lord Bless You and Keep You", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjbqA1a16rh_aiVV4Mc21bW5" },
@@ -92,7 +97,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 { "title": "The Majesty and Glory of Your Name - Tom Fettke", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjZxutW4AZAePTqT5L7fYPdl" },
                 { "title": "We Will Serve Him", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjbpDYLjbPshEsfkQpYCdJwR" },
                 { "title": "Let My Love Be Heard - Jake Runestad", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDja1vQf7emcxikXiqSi-DrwE" },
-                { "title": "LUX AETERNA – Elgar’s Nimrod with Requiem Mass Text (Arr. John Cameron", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjYdFZ_3pw4aGaQmpYSjZcF8" }
+                { "title": "LUX AETERNA – Elgar’s Nimrod with Requiem Mass Text (Arr. John Cameron", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjYdFZ_3pw4aGaQmpYSjZcF8" },
+				{ "title": "Take And Receive – Manuel V. Francisco, S.J. (Arr. Arnold Zamora)", "link": "https://www.youtube.com/playlist?list=PLb8bljIR-jwg" },
+				{ "title": "God So Loved the World – Sir John Stainer", "link": "https://www.youtube.com/playlist?list=PLBeW0E8STYKw" }
             ],
             "Classical Pieces": [
                 { "title": "Abendlied", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjaoQ0wgW6n_leDwCpdhS0By" },
@@ -102,7 +109,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 { "title": "\"Hallelujah!\" Chorus - Handel's Messiah", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjZoiwqXuXV8MCU53ARNyh6V" },
                 { "title": "Sicut cervus - Giovanni Pierluigi da Palestrina", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjbfxdmMb6DLUh_UiJ6gwh1I" },
                 { "title": "No. 53: Worthy is the Lamb That was Slain - Handel's Messiah", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjZemOPcqf_kGw5Zgjzrk7MA" },
-                { "title": "Jagdlied - Mendelssohn Op.59-6", "link": "https://www.youtube.com/watch?v=EXAMPLE1" }
+                { "title": "Jagdlied - Mendelssohn Op.59-6", "link": "https://www.youtube.com/watch?v=EXAMPLE1" },
+				{ "title": "Requiem, 3. Dies Irae – Wolfgang Amadeus Mozart", "link": "https://www.youtube.com/playlist?list=PLNEoy629wd24" }
             ],
             "Secular Songs": [
                 { "title": "Seasons of Love", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjarVu2OrxYSa6NakUyuqpuP" },
@@ -120,7 +128,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 { "title": "Let My Love Be Heard - Jake Runestad", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDja1vQf7emcxikXiqSi-DrwE" },
                 { "title": "Abendlied", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjaoQ0wgW6n_leDwCpdhS0By" },
                 { "title": "Amor De Mi Alma (You Are the Love of My Soul)", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjbv6pSZFgR9-EFYrBLKu_uQ" },
-				{ "title": "The Road Home – Michael Dennis Browne", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjY2zt5UD_l9hTjL2HroBik-" }
+				{ "title": "The Road Home – Michael Dennis Browne", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjY2zt5UD_l9hTjL2HroBik-" },
+				{ "title": "O Love – Elaine Hagenberg", "link": "https://www.youtube.com/playlist?list=PLSn2Davv2204" }
             ],
 			"Shall We Gather At the River Concert": [
                 { "title": "The Road Home – Michael Dennis Browne", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjY2zt5UD_l9hTjL2HroBik-" },
