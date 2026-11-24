@@ -18,7 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const appData = {
         "latestUpdates": [
             // List the titles of the 4 videos you want to showcase as "Latest Updates"
-            "The Road Home – Michael Dennis Browne",
+            "Kulay ng Pasko – Christopher Borela",
+			"The Road Home – Michael Dennis Browne",
             "Shall We Gather at the River – Robert Lowry (Arr. Blake Morgan)",
             "Ave Maris Stella – Philip W. Stopford",
             "Let My Love Be Heard - Jake Runestad",
@@ -88,7 +89,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 { "title": "Silent Night - Franz Xaver Gruber", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjZDX49ryy023TmaIvRBoaj2" },
                 { "title": "O Come, All Ye Faithful - John F. Wade", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjZ5_sj1HI8ae_EGJuCSDNIZ" },
 				{ "title": "Tanging Hiling – Grijaldo / Alcala", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjapLhE4b24mxnZCSpCXrCbC" },
-				{ "title": "We Shall Light a Thousand Candles – David Rasbach", "link": "https://www.youtube.com/playlist?list=PLSvF9RvDB59I" }
+				{ "title": "We Shall Light a Thousand Candles – David Rasbach", "link": "https://www.youtube.com/playlist?list=PLSvF9RvDB59I" },
+				{ "title": "Kulay ng Pasko – Christopher Borela", "link": "https://www.youtube.com/playlist?list=PLR_dM1oOsOXk" }
             ],
             "Sacred Music": [
                 { "title": "The Lord Bless You and Keep You", "link": "https://www.youtube.com/playlist?list=PLAAamlPjfDjbqA1a16rh_aiVV4Mc21bW5" },
